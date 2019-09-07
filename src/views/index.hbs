@@ -1,8 +1,46 @@
 <div class="container-fluid">
     <div class="row">
-        <h1 class="mx-auto mt-4">IBM Datathon</h1>
-        <iframe src="https://47a7e36d434c46a284cd966d42828df9.eu-central-1.aws.cloud.es.io:9243/app/kibana#/dashboard/fc2d7b20-d187-11e9-9cc0-61448e3fa8be?embed=true&_g=(filters:!())&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:15,i:'1',w:16,x:0,y:0),id:e7d99fa0-d187-11e9-9cc0-61448e3fa8be,panelIndex:'1',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(params:(sort:(columnIndex:0,direction:desc)))),gridData:(h:18,i:'2',w:24,x:24,y:15),id:eaed07e0-d18c-11e9-9cc0-61448e3fa8be,panelIndex:'2',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'3',w:24,x:0,y:15),id:'3087a590-d191-11e9-9cc0-61448e3fa8be',panelIndex:'3',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:15,i:'4',w:32,x:16,y:0),id:bb2332a0-d191-11e9-9cc0-61448e3fa8be,panelIndex:'4',type:visualization,version:'7.3.1')),query:(language:kuery,query:''),timeRestore:!f,title:'Main+Dashboard',viewMode:view)"
-                height="670" width="100%" style="border: 0;">
-        </iframe>
+        <div class="col-12">
+            <h1 class="mx-auto mt-4 text-center">IBM Datathon</h1>
+            <hr>
+            <div class="row my-4">
+                <div class="col-12">
+                    <form class="form-inline">
+                        <div class="form-group mb-2">
+                            <label for="lblKupacID" class="sr-only">Kupac ID label</label>
+                            <input type="text" readonly class="form-control-plaintext" id="lblKupacID"
+                                   value="Unesite ID kupca:">
+                        </div>
+                        <div class="form-group mx-3 mb-2">
+                            <label for="kupacID" class="sr-only">Kupac ID</label>
+                            <input type="number" class="form-control" id="kupacID" placeholder="Kupac ID">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2" id="btnKupacID">Proveri</button>
+                    </form>
+                </div>
+
+                <div class="col-6 d-none my-2" id="riskLevelDiv">
+                    <div class="card" id="card-border-color">
+                        <div class="card-body">
+                            <h3 class="d-inline">
+                                Risk Group for Kupac with ID
+                                <p class="d-inline font-weight-bold" id="kupacIDValue"></p>:
+                            </h3>
+                            <h3 class="d-inline font-weight-bold" id="riskLevel"></h3>
+
+                            <h3>
+                                Iznos koji je trazen:
+                                <p class="d-inline font-weight-bold" id="riskLevelMoney"></p>
+                                RSD
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <iframe id="kibanaMainDashboard" src="https://47a7e36d434c46a284cd966d42828df9.eu-central-1.aws.cloud.es.io:9243/app/kibana#/dashboard/fc2d7b20-d187-11e9-9cc0-61448e3fa8be?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1y,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:17,i:'1',w:21,x:0,y:15),id:e7d99fa0-d187-11e9-9cc0-61448e3fa8be,panelIndex:'1',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(params:(sort:(columnIndex:0,direction:desc)))),gridData:(h:18,i:'2',w:24,x:24,y:32),id:eaed07e0-d18c-11e9-9cc0-61448e3fa8be,panelIndex:'2',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'3',w:24,x:0,y:50),id:'3087a590-d191-11e9-9cc0-61448e3fa8be',panelIndex:'3',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:15,i:'4',w:48,x:0,y:0),id:bb2332a0-d191-11e9-9cc0-61448e3fa8be,panelIndex:'4',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'5',w:24,x:0,y:32),id:'6c421dd0-d197-11e9-9cc0-61448e3fa8be',panelIndex:'5',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(defaultColors:('0%25+-+10%25':'rgb(247,251,255)','10%25+-+20%25':'rgb(227,238,249)','20%25+-+30%25':'rgb(208,225,242)','30%25+-+40%25':'rgb(182,212,233)','40%25+-+50%25':'rgb(148,196,223)','50%25+-+60%25':'rgb(107,174,214)','60%25+-+70%25':'rgb(74,152,201)','70%25+-+80%25':'rgb(46,126,188)','80%25+-+90%25':'rgb(23,100,171)','90%25+-+100%25':'rgb(8,74,145)'),legendOpen:!f)),gridData:(h:17,i:'6',w:27,x:21,y:15),id:'8ae3f690-d1a7-11e9-9cc0-61448e3fa8be',panelIndex:'6',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'7',w:24,x:24,y:50),id:'9850af10-d1ae-11e9-9cc0-61448e3fa8be',panelIndex:'7',type:visualization,version:'7.3.1')),query:(language:kuery,query:''),timeRestore:!t,title:'Main+Dashboard',viewMode:view)"
+                    height="670" width="100%" style="border: 0;">
+            </iframe>
+        </div>
     </div>
 </div>
