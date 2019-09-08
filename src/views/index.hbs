@@ -11,6 +11,12 @@
                                 <h3>Pretraga svih kupaca po ID-ju</h3>
                                 <hr>
                             </div>
+                            <div>
+                                <p>
+                                    Mozete pretraziti kupce po ID-ju. Za unetog kupca, prikazace vam se nivo rizika za
+                                    date granicne vrednosti.
+                                </p>
+                            </div>
                             <form class="form-inline mb-4">
                                 <div class="form-group mb-2">
                                     <label for="lblKupacID" class="sr-only">Kupac ID label</label>
@@ -53,20 +59,63 @@
                             <h3 class="d-inline font-weight-bold" id="riskLevel6M"></h3>
                             <br>
                         </div>
+                        <div class="card-footer text-center">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#infoModal">
+                                More Info
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Kibana -->
-            <iframe id="kibanaMainDashboard"
-                    src="https://47a7e36d434c46a284cd966d42828df9.eu-central-1.aws.cloud.es.io:9243/app/kibana#/dashboard/fc2d7b20-d187-11e9-9cc0-61448e3fa8be?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1y,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:17,i:'1',w:21,x:0,y:15),id:e7d99fa0-d187-11e9-9cc0-61448e3fa8be,panelIndex:'1',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(params:(sort:(columnIndex:0,direction:desc)))),gridData:(h:18,i:'2',w:24,x:24,y:32),id:eaed07e0-d18c-11e9-9cc0-61448e3fa8be,panelIndex:'2',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'3',w:24,x:0,y:50),id:'3087a590-d191-11e9-9cc0-61448e3fa8be',panelIndex:'3',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:15,i:'4',w:48,x:0,y:0),id:bb2332a0-d191-11e9-9cc0-61448e3fa8be,panelIndex:'4',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'5',w:24,x:0,y:32),id:'6c421dd0-d197-11e9-9cc0-61448e3fa8be',panelIndex:'5',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(defaultColors:('0%25+-+10%25':'rgb(247,251,255)','10%25+-+20%25':'rgb(227,238,249)','20%25+-+30%25':'rgb(208,225,242)','30%25+-+40%25':'rgb(182,212,233)','40%25+-+50%25':'rgb(148,196,223)','50%25+-+60%25':'rgb(107,174,214)','60%25+-+70%25':'rgb(74,152,201)','70%25+-+80%25':'rgb(46,126,188)','80%25+-+90%25':'rgb(23,100,171)','90%25+-+100%25':'rgb(8,74,145)'),legendOpen:!f)),gridData:(h:17,i:'6',w:27,x:21,y:15),id:'8ae3f690-d1a7-11e9-9cc0-61448e3fa8be',panelIndex:'6',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'7',w:24,x:24,y:50),id:'9850af10-d1ae-11e9-9cc0-61448e3fa8be',panelIndex:'7',type:visualization,version:'7.3.1')),query:(language:kuery,query:''),timeRestore:!t,title:'Main+Dashboard',viewMode:view)"
-                    height="670" width="100%" style="border: 0;">
-            </iframe>
+            <!--            &lt;!&ndash; Kibana &ndash;&gt;-->
+            <!--            <iframe id="kibanaMainDashboard"-->
+            <!--                    src="https://47a7e36d434c46a284cd966d42828df9.eu-central-1.aws.cloud.es.io:9243/app/kibana#/dashboard/fc2d7b20-d187-11e9-9cc0-61448e3fa8be?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1y,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:17,i:'1',w:21,x:0,y:15),id:e7d99fa0-d187-11e9-9cc0-61448e3fa8be,panelIndex:'1',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(params:(sort:(columnIndex:0,direction:desc)))),gridData:(h:18,i:'2',w:24,x:24,y:32),id:eaed07e0-d18c-11e9-9cc0-61448e3fa8be,panelIndex:'2',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'3',w:24,x:0,y:50),id:'3087a590-d191-11e9-9cc0-61448e3fa8be',panelIndex:'3',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:15,i:'4',w:48,x:0,y:0),id:bb2332a0-d191-11e9-9cc0-61448e3fa8be,panelIndex:'4',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'5',w:24,x:0,y:32),id:'6c421dd0-d197-11e9-9cc0-61448e3fa8be',panelIndex:'5',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(defaultColors:('0%25+-+10%25':'rgb(247,251,255)','10%25+-+20%25':'rgb(227,238,249)','20%25+-+30%25':'rgb(208,225,242)','30%25+-+40%25':'rgb(182,212,233)','40%25+-+50%25':'rgb(148,196,223)','50%25+-+60%25':'rgb(107,174,214)','60%25+-+70%25':'rgb(74,152,201)','70%25+-+80%25':'rgb(46,126,188)','80%25+-+90%25':'rgb(23,100,171)','90%25+-+100%25':'rgb(8,74,145)'),legendOpen:!f)),gridData:(h:17,i:'6',w:27,x:21,y:15),id:'8ae3f690-d1a7-11e9-9cc0-61448e3fa8be',panelIndex:'6',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'7',w:24,x:24,y:50),id:'9850af10-d1ae-11e9-9cc0-61448e3fa8be',panelIndex:'7',type:visualization,version:'7.3.1')),query:(language:kuery,query:''),timeRestore:!t,title:'Main+Dashboard',viewMode:view)"-->
+            <!--                    height="670" width="100%" style="border: 0;">-->
+            <!--            </iframe>-->
 
-            <!-- IBM Watson Studio -->
-            <iframe src="https://dataplatform.cloud.ibm.com/dashboards/83ea5ee6-7416-4270-8a27-6aa5acb039d3/view/021dc100049f14d668d2e2e4079b7e527f322208babb8000878c7b490d677197f0681ac5c8794a5fda100160a0bd4459c8"
-                    height="500" width="100%" style="border: 0;">
-            </iframe>
+            <!--            &lt;!&ndash; IBM Watson Studio &ndash;&gt;-->
+            <!--            <iframe src="https://dataplatform.cloud.ibm.com/dashboards/83ea5ee6-7416-4270-8a27-6aa5acb039d3/view/021dc100049f14d668d2e2e4079b7e527f322208babb8000878c7b490d677197f0681ac5c8794a5fda100160a0bd4459c8"-->
+            <!--                    height="500" width="100%" style="border: 0;">-->
+            <!--            </iframe>-->
+        </div>
+    </div>
+</div>
+
+<!-- Add movie modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
+     aria-labelledby="infoModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Info</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id venenatis odio. Mauris ut
+                    sapien id libero ultrices sagittis. Duis ullamcorper velit nec augue efficitur sodales. Sed
+                    placerat id mi vitae fermentum. Quisque volutpat diam vitae nunc vestibulum, ut luctus metus
+                    pellentesque. Proin ut viverra ex, nec maximus odio. Vivamus eu molestie lectus. Class aptent
+                    taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                </p>
+
+                <p>
+                    Mauris nec mi at eros rhoncus suscipit. Donec vestibulum eros sed pretium pellentesque. Vivamus
+                    accumsan quis nisl a semper. Duis ut malesuada leo. Ut varius ipsum quam, vitae sagittis massa
+                    tempus sit amet. Fusce pellentesque non risus sit amet imperdiet. Aliquam erat volutpat. Aliquam
+                    ac purus nec diam tempor tempor vel eu justo. In condimentum vitae velit non dapibus. Fusce ut
+                    faucibus augue. Donec ultrices rutrum viverra. Maecenas quis odio tincidunt, aliquet quam vitae,
+                    mollis erat. Nam tincidunt vel lectus sit amet pharetra. In porttitor, augue in laoreet rutrum,
+                    magna mauris faucibus ipsum, sit amet tempus neque lorem vitae dui.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal">OK</button>
+            </div>
         </div>
     </div>
 </div>

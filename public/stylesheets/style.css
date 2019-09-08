@@ -1758,7 +1758,8 @@ a:hover {
 }
 
 .card {
-    margin: 1rem auto
+    margin: 1rem auto;
+    width: 100%;
 }
 
 .text-blue {
