@@ -1,12 +1,29 @@
 module.exports.api = (req, res) => {
     const riskLevelLabels = ['No Risk', 'Low Risk', 'Medium Risk', 'High Risk'];
+    const randLebel = riskLevelLabels[Math.floor(Math.random() * 2)];
+    let randLebel2 = randLebel;
+    let randLebel3 = randLebel;
+
+    if (randLebel === 'No Risk') {
+        randLebel2 = riskLevelLabels[Math.floor(Math.random() * 2)];
+    } else {
+        randLebel2 = riskLevelLabels[Math.floor(Math.random() * 2 + 1)];
+    }
+
+    if (randLebel2 === 'Low Risk') {
+        randLebel3 = riskLevelLabels[Math.floor(Math.random() * 2 + 1)];
+    } else if (randLebel2 === 'Medium Risk') {
+        randLebel3 = riskLevelLabels[Math.floor(Math.random() * 2 + 2)];
+    } else {
+        randLebel3 = riskLevelLabels[Math.floor(Math.random() * 2 + 2)];
+    }
 
     const riskGroups = {
         kupacID: req.url.split('/').pop(),
-        iznos500000: riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)],
-        iznos2000000: riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)],
-        iznos4000000: riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)],
-        iznos6000000: riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]
+        iznos500000: 'No Risk',
+        iznos2000000: randLebel,
+        iznos4000000: randLebel2,
+        iznos6000000: randLebel3
     };
 
     res.send(riskGroups);
