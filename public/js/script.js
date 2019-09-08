@@ -127,55 +127,68 @@ $(document).ready(function () {
 
         $('#kibanaMainDashboard').attr('src', kibana);
         $('#kupacIDValue').text(kupacID);
-        $('#riskLevelDiv').toggleClass('d-none');
+
+        if ($('#riskLevelDiv').hasClass('d-none')) {
+            $('#riskLevelDiv').removeClass('d-none');
+        }
 
         const riskLevelMoneyLabels = [500000, 2000000, 4000000, 6000000];
         $('#riskLevelMoney').text(riskLevelMoneyLabels[Math.floor(Math.random() * riskLevelMoneyLabels.length)].toLocaleString());
 
         const riskLevelLabels = ['No Risk', 'Low Risk', 'Medium Risk', 'High Risk'];
-        const riskLevel = $('#riskLevel').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        const riskLevel500T = $('#riskLevel500T').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        const riskLevel2M = $('#riskLevel2M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        const riskLevel4M = $('#riskLevel4M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        const riskLevel6M = $('#riskLevel6M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
 
+        setRiskLevelTextColor(riskLevel500T, 'riskLevel500T');
+        setRiskLevelTextColor(riskLevel2M, 'riskLevel2M');
+        setRiskLevelTextColor(riskLevel4M, 'riskLevel4M');
+        setRiskLevelTextColor(riskLevel6M, 'riskLevel6M');
+    });
+
+    function setRiskLevelTextColor(riskLevel, riskLevelLabel) {
         switch (riskLevel[0].innerHTML) {
             case 'No Risk':
-                $('#riskLevel').removeClass();
-                $('#riskLevel').addClass('d-inline');
-                $('#riskLevel').addClass('font-weight-bold');
-                $('#riskLevel').addClass('text-green');
+                $('#' + riskLevelLabel).removeClass();
+                $('#' + riskLevelLabel).addClass('d-inline');
+                $('#' + riskLevelLabel).addClass('font-weight-bold');
+                $('#' + riskLevelLabel).addClass('text-green');
 
-                $('#card-border-color').removeClass();
-                $('#card-border-color').addClass('card');
-                $('#card-border-color').addClass('border-top-green');
+                // $('#card-border-color').removeClass();
+                // $('#card-border-color').addClass('card');
+                // $('#card-border-color').addClass('border-top-green');
                 break;
             case 'Low Risk':
-                $('#riskLevel').removeClass();
-                $('#riskLevel').addClass('d-inline');
-                $('#riskLevel').addClass('font-weight-bold');
-                $('#riskLevel').addClass('text-blue');
+                $('#' + riskLevelLabel).removeClass();
+                $('#' + riskLevelLabel).addClass('d-inline');
+                $('#' + riskLevelLabel).addClass('font-weight-bold');
+                $('#' + riskLevelLabel).addClass('text-yellow');
 
-                $('#card-border-color').removeClass();
-                $('#card-border-color').addClass('card');
-                $('#card-border-color').addClass('border-top-blue');
+                // $('#card-border-color').removeClass();
+                // $('#card-border-color').addClass('card');
+                // $('#card-border-color').addClass('border-top-blue');
                 break;
             case 'Medium Risk':
-                $('#riskLevel').removeClass();
-                $('#riskLevel').addClass('d-inline');
-                $('#riskLevel').addClass('font-weight-bold');
-                $('#riskLevel').addClass('text-orange');
+                $('#' + riskLevelLabel).removeClass();
+                $('#' + riskLevelLabel).addClass('d-inline');
+                $('#' + riskLevelLabel).addClass('font-weight-bold');
+                $('#' + riskLevelLabel).addClass('text-orange');
 
-                $('#card-border-color').removeClass();
-                $('#card-border-color').addClass('card');
-                $('#card-border-color').addClass('border-top-orange');
+                // $('#card-border-color').removeClass();
+                // $('#card-border-color').addClass('card');
+                // $('#card-border-color').addClass('border-top-orange');
                 break;
             case 'High Risk':
-                $('#riskLevel').removeClass();
-                $('#riskLevel').addClass('d-inline');
-                $('#riskLevel').addClass('font-weight-bold');
-                $('#riskLevel').addClass('text-red');
+                $('#' + riskLevelLabel).removeClass();
+                $('#' + riskLevelLabel).addClass('d-inline');
+                $('#' + riskLevelLabel).addClass('font-weight-bold');
+                $('#' + riskLevelLabel).addClass('text-red');
 
-                $('#card-border-color').removeClass();
-                $('#card-border-color').addClass('card');
-                $('#card-border-color').addClass('border-top-red');
+                // $('#card-border-color').removeClass();
+                // $('#card-border-color').addClass('card');
+                // $('#card-border-color').addClass('border-top-red');
                 break;
         }
-    });
+    }
 });
