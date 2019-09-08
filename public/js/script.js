@@ -120,8 +120,20 @@ $(document).ready(function () {
     $('#btnKupacID').click((e) => {
         e.preventDefault();
 
-        // const kibanaOld = "https://47a7e36d434c46a284cd966d42828df9.eu-central-1.aws.cloud.es.io:9243/app/kibana#/dashboard/fc2d7b20-d187-11e9-9cc0-61448e3fa8be?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1y,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:17,i:'1',w:21,x:0,y:15),id:e7d99fa0-d187-11e9-9cc0-61448e3fa8be,panelIndex:'1',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(params:(sort:(columnIndex:0,direction:desc)))),gridData:(h:18,i:'2',w:24,x:24,y:32),id:eaed07e0-d18c-11e9-9cc0-61448e3fa8be,panelIndex:'2',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'3',w:24,x:0,y:50),id:'3087a590-d191-11e9-9cc0-61448e3fa8be',panelIndex:'3',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:15,i:'4',w:48,x:0,y:0),id:bb2332a0-d191-11e9-9cc0-61448e3fa8be,panelIndex:'4',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'5',w:24,x:0,y:32),id:'6c421dd0-d197-11e9-9cc0-61448e3fa8be',panelIndex:'5',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(defaultColors:('0%25+-+10%25':'rgb(247,251,255)','10%25+-+20%25':'rgb(227,238,249)','20%25+-+30%25':'rgb(208,225,242)','30%25+-+40%25':'rgb(182,212,233)','40%25+-+50%25':'rgb(148,196,223)','50%25+-+60%25':'rgb(107,174,214)','60%25+-+70%25':'rgb(74,152,201)','70%25+-+80%25':'rgb(46,126,188)','80%25+-+90%25':'rgb(23,100,171)','90%25+-+100%25':'rgb(8,74,145)'),legendOpen:!f)),gridData:(h:17,i:'6',w:27,x:21,y:15),id:'8ae3f690-d1a7-11e9-9cc0-61448e3fa8be',panelIndex:'6',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'7',w:24,x:24,y:50),id:'9850af10-d1ae-11e9-9cc0-61448e3fa8be',panelIndex:'7',type:visualization,version:'7.3.1')),query:(language:kuery,query:''),timeRestore:!t,title:'Main+Dashboard',viewMode:view)";
         const kupacID = $('#kupacID').val();
+
+        $.get(`/api/${kupacID}`, (data) => {
+            const riskLevel500T = $('#riskLevel500T').text(data.iznos500000);
+            const riskLevel2M = $('#riskLevel2M').text(data.iznos2000000);
+            const riskLevel4M = $('#riskLevel4M').text(data.iznos4000000);
+            const riskLevel6M = $('#riskLevel6M').text(data.iznos6000000);
+
+            setRiskLevelTextColor(riskLevel500T, 'riskLevel500T');
+            setRiskLevelTextColor(riskLevel2M, 'riskLevel2M');
+            setRiskLevelTextColor(riskLevel4M, 'riskLevel4M');
+            setRiskLevelTextColor(riskLevel6M, 'riskLevel6M');
+        }, 'json');
+
         const changes = "('$state':(store:appState),meta:(alias:!n,controlledBy:'1567894826071',disabled:!f,index:b7a67e40-d1ad-11e9-9cc0-61448e3fa8be,key:KupacID,negate:!f,params:(query:" + kupacID + "),type:phrase,value:'" + kupacID.toLocaleString() + "'),query:(match:(KupacID:(query:" + kupacID + ",type:phrase))))";
         const kibana = "https://47a7e36d434c46a284cd966d42828df9.eu-central-1.aws.cloud.es.io:9243/app/kibana#/dashboard/fc2d7b20-d187-11e9-9cc0-61448e3fa8be?embed=true&_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-1y,to:now))&_a=(description:'',filters:!(" + changes + "),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:17,i:'1',w:21,x:0,y:15),id:e7d99fa0-d187-11e9-9cc0-61448e3fa8be,panelIndex:'1',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(params:(sort:(columnIndex:0,direction:desc)))),gridData:(h:18,i:'2',w:24,x:24,y:32),id:eaed07e0-d18c-11e9-9cc0-61448e3fa8be,panelIndex:'2',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'3',w:24,x:0,y:50),id:'3087a590-d191-11e9-9cc0-61448e3fa8be',panelIndex:'3',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:15,i:'4',w:48,x:0,y:0),id:bb2332a0-d191-11e9-9cc0-61448e3fa8be,panelIndex:'4',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'5',w:24,x:0,y:32),id:'6c421dd0-d197-11e9-9cc0-61448e3fa8be',panelIndex:'5',type:visualization,version:'7.3.1'),(embeddableConfig:(vis:(defaultColors:('0%25+-+10%25':'rgb(247,251,255)','10%25+-+20%25':'rgb(227,238,249)','20%25+-+30%25':'rgb(208,225,242)','30%25+-+40%25':'rgb(182,212,233)','40%25+-+50%25':'rgb(148,196,223)','50%25+-+60%25':'rgb(107,174,214)','60%25+-+70%25':'rgb(74,152,201)','70%25+-+80%25':'rgb(46,126,188)','80%25+-+90%25':'rgb(23,100,171)','90%25+-+100%25':'rgb(8,74,145)'),legendOpen:!f)),gridData:(h:17,i:'6',w:27,x:21,y:15),id:'8ae3f690-d1a7-11e9-9cc0-61448e3fa8be',panelIndex:'6',type:visualization,version:'7.3.1'),(embeddableConfig:(),gridData:(h:18,i:'7',w:24,x:24,y:50),id:'9850af10-d1ae-11e9-9cc0-61448e3fa8be',panelIndex:'7',type:visualization,version:'7.3.1')),query:(language:kuery,query:''),timeRestore:!t,title:'Main+Dashboard',viewMode:view)";
 
@@ -132,19 +144,21 @@ $(document).ready(function () {
             $('#riskLevelDiv').removeClass('d-none');
         }
 
-        const riskLevelMoneyLabels = [500000, 2000000, 4000000, 6000000];
-        $('#riskLevelMoney').text(riskLevelMoneyLabels[Math.floor(Math.random() * riskLevelMoneyLabels.length)].toLocaleString());
+        // TODO
+        // const riskLevelMoneyLabels = [500000, 2000000, 4000000, 6000000];
+        // $('#riskLevelMoney').text(riskLevelMoneyLabels[Math.floor(Math.random() * riskLevelMoneyLabels.length)].toLocaleString());
 
-        const riskLevelLabels = ['No Risk', 'Low Risk', 'Medium Risk', 'High Risk'];
-        const riskLevel500T = $('#riskLevel500T').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
-        const riskLevel2M = $('#riskLevel2M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
-        const riskLevel4M = $('#riskLevel4M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
-        const riskLevel6M = $('#riskLevel6M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
-
-        setRiskLevelTextColor(riskLevel500T, 'riskLevel500T');
-        setRiskLevelTextColor(riskLevel2M, 'riskLevel2M');
-        setRiskLevelTextColor(riskLevel4M, 'riskLevel4M');
-        setRiskLevelTextColor(riskLevel6M, 'riskLevel6M');
+        // TODO
+        // const riskLevelLabels = ['No Risk', 'Low Risk', 'Medium Risk', 'High Risk'];
+        // const riskLevel500T = $('#riskLevel500T').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        // const riskLevel2M = $('#riskLevel2M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        // const riskLevel4M = $('#riskLevel4M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        // const riskLevel6M = $('#riskLevel6M').text(riskLevelLabels[Math.floor(Math.random() * riskLevelLabels.length)]);
+        //
+        // setRiskLevelTextColor(riskLevel500T, 'riskLevel500T');
+        // setRiskLevelTextColor(riskLevel2M, 'riskLevel2M');
+        // setRiskLevelTextColor(riskLevel4M, 'riskLevel4M');
+        // setRiskLevelTextColor(riskLevel6M, 'riskLevel6M');
     });
 
     function setRiskLevelTextColor(riskLevel, riskLevelLabel) {

@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+const riskGroupController = require('../controllers/riskGroupController');
+
+// Setting layout for all "user" requests to main layout, and passing control to next handler
+router.all('/*', function (req, res, next) {
+  req.app.locals.layout = 'layout';
+  next();
 });
+
+router.get('/', riskGroupController.home);
+// router.get('/', riskGroupController.index);
+// router.get('/api/riskGroups', riskGroupController.riskGroups);
+router.get('/api/:id', riskGroupController.api);
 
 module.exports = router;
